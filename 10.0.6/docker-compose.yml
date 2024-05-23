@@ -1,0 +1,27 @@
+version: "3.8"
+ 
+services:
+    mysql:
+      image: mysql:latest
+      container_name: mysql
+      restart: always
+      hostname: mysql
+      volumes:
+        - ./storage/mysql:/var/lib/mysql
+      env_file:
+        - ./mysql.env
+      ports:
+        - "10.10.166.212:3310:3306"
+ 
+    glpi:
+      image: xiemuhou/glpi:10.0.6
+      restart: always
+      container_name : glpi
+      hostname: glpi
+      ports:
+        - "10.10.166.212:9010:80"
+      volumes:
+        - /etc/localtime:/etc/localtime:ro
+        - ./storage/var/www/html/glpi/:/var/www/html/glpi
+      environment:
+        - TIMEZONE=Asia/Shanghai
