@@ -30,7 +30,6 @@ else
 
 	tar -xzf ${TAR_GLPI} -C ${FOLDER_WEB}
 	rm -rf ${TAR_GLPI}
-	rm ${FOLDER_WEB}${FOLDER_GLPI}install/install.php
 	chown -R www-data:www-data ${FOLDER_WEB}${FOLDER_GLPI}
 fi
 
